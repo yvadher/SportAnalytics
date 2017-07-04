@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Gamedev Canvas Workshop</title>
+       
+    
+   
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+
+
+    <!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+	<link rel="stylesheet" href="css/style.css">
+    <script src="js/animate.js"></script>
+</head>
+<body>
+
+
+	<div ng-app ng-controller=>
+		<!--navbar STARTS -->
+			<nav class="navbar navbar-inverse" >
+		        <div class="container-fluid">
+		            <div class="navbar-header">
+		                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+		                    <span class="icon-bar"></span>
+		                </button>
+		                <a href="#" class="navbar-brand"> Sports Analytics</a>
+		            </div>
+		            <div class="collapse navbar-collapse" id="myNavbar">
+		                <ul class="nav navbar-nav navbar-right">
+		                    <li><a href="#about">About</a></li>
+		                    <li><a href="#Simulator">Simulator</a></li>
+		                    <li><a href="#Rankings">Rankings</a></li>
+		                </ul>
+		            </div>
+		        </div>
+		    </nav>
+		<!--Nav bar ENDS -->
+
+
+		<!-- About -->
+		<div class="row image">
+			<img class="image" src="Res/header.jpg" alt="HeaderImg">
+			<center><h1>Welcome to Sports Analytics</h1></center>
+		</div>
+		<!-- END about -->
+
+		<div class='row wrapper' id="controlSim" >
+			<form class="form-inline">
+				<div class="form-group">
+					<button type="button" class="btn btn-default">Ready</button>
+				    <button type="button"  class="btn btn-default">Start</button>
+				    <button type="button" class="btn btn-default">Stop</button>
+					<span>
+						<label for="speedSelect">Select Speed:</label>
+						<select class="form-control" id="speedSelect">
+							<option>slow</option>
+							<option>Medium</option>
+							<option>fast</option>
+						</select>
+					</span>
+				</div>
+			</form>
+		</div>
+
+		<!-- Simulator-->
+		<div class="row simulator">
+			<div class="container-fluid">
+				<canvas id="myCanvas"></canvas>
+			</div>
+		</div>
+		<!--END simulator  -->
+
+		<!-- Footer -->
+		<h2 style="text-align: center"> Finish the page </h2>
+		<!-- footer ends -->
+	</div>
+
+
+</body>
+<script>
+
+var app = angular.module('myApp', ["ngTable","ngCookies"]);
+app.controller('devicesCtrl', function($scope, $http, NgTableParams,$q,$cookies) {
+
+});
+
+</script>
+	
+</html>

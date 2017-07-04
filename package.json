@@ -19,7 +19,7 @@
         "express": "4.13.x",
         "cfenv": "1.0.x",
         "colors": "^1.1.2",
-          "http": "0.0.0",
+        "http": "0.0.0",
         "nconf": "*",
         "path": "^0.12.7"
     },
@@ -28,7 +28,6 @@
         "url": "git+https://github.com/YagnikV/SportAnalytics.git"
     },
     "author": "Yagnik",
-    "license": "MIT",
     "bugs": {
       "url": "https://github.com/YagnikV/SportAnalytics/issues"
     },

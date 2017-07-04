@@ -1,0 +1,58 @@
+
+canvas { 
+	background: #eee;
+	display: block; 
+	margin: 0 auto; 
+	cursor:crosshair;
+}
+
+.navbar { 
+	margin-bottom: 0;
+	border: 0;
+	border-radius: 0px;
+	position: fixed;
+	width: 100%;
+	z-index: 1;
+}
+
+.navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
+  border: none;
+  background-color: transparent;
+  background-image: none; }
+
+
+.image{
+	position: relative; 
+	width: 100%; /* for IE 6 */
+	padding : 0;
+}
+
+.image h1{
+	position: absolute; 
+	font-family: sans-serif;
+	top: 100px; 
+	width: 100%;
+	color: white;
+}
+
+.simulator{
+    padding-top: 20px;
+    padding-right: 40px;
+    padding-bottom: 20px;
+    padding-left: 40px;
+}
+
+.wrapper {
+    text-align: center;
+}
+
+.button {
+    position: absolute;
+    padding: 5px 5px 5px 5px ;
+    top: 50%;
+}
+
+#controlSim{
+	padding : 10px 10px 10px 10px;
+}
+

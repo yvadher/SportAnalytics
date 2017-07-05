@@ -20,7 +20,7 @@ app.use(express.static(__dirname + '/public'));
 
 
 var uniqueList = new Map();
-var objToSend;
+let objToSend = Object.create(null);
 
 var convertData = function(){
 	// read from a file
@@ -60,12 +60,13 @@ var convertData = function(){
 					if (timeObj){ uniqueList.set(key,timeObj); }
 				}
 				console.log("done");
-
-				for (var key of uniqueList.keys()){
-					console.log( key+ "|" + uniqueList.get(key));
-					objToSend[key] =  uniqueList.get(key) ;
-				}
-
+/*
+				
+*/               
+				
+			    for (let [k,v] of uniqueList) {
+			        objToSend[k] = v;
+			    }
 			};
 
 			makeObj(makeUniquePlayers());
@@ -76,10 +77,7 @@ var convertData = function(){
 setTimeout(function(){convertData();},1*1000);
 
 app.get('/api/getData',function(req,res){
-	console.log("Sending res: "+ uniqueList.has('"Diego Valeri"'));
-	
-
-
+	console.log("Sending res: "+ uniqueList.has('Diego Valeri'));
 	res.status(200).send(objToSend);
 });
 

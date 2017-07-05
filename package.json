@@ -21,7 +21,9 @@
         "colors": "^1.1.2",
         "http": "0.0.0",
         "nconf": "*",
-        "path": "^0.12.7"
+        "path": "^0.12.7",
+        "exceljs":"*",
+        "log-timestamp":"*"
     },
     "repository": {
         "type": "git",

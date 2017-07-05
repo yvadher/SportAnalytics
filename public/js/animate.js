@@ -58,8 +58,6 @@ app.controller('myCtl', function($scope, $http) {
 		.then(function (response) {
 			$scope.dataPoints = response.data;
 
-			//var obj = JSON.parse(response.data);
-			console.log(JSON.stringify(response.data[1]));
 			console.log(JSON.stringify(response.data));
 		});
 	};

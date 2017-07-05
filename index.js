@@ -20,6 +20,7 @@ app.use(express.static(__dirname + '/public'));
 
 
 var uniqueList = new Map();
+var objToSend;
 
 var convertData = function(){
 	// read from a file
@@ -40,7 +41,7 @@ var convertData = function(){
 			var makeUniquePlayers = function(){
 				console.log("Called makeUniquePlayers");
 				playerCol.eachCell({ includeEmpty: false }, function(cell, rowNumber) {
-					var name = JSON.stringify(cell.value);
+					name = cell.value;
 					if( !uniqueList.has(name) ) { uniqueList.set(name,null); }
 				});
 				console.log("MakeUnique endsss!");
@@ -52,15 +53,19 @@ var convertData = function(){
 				for (var key of uniqueList.keys()) {
 					//make a object 
 					playerCol.eachCell({includeEmpty: false},function(cell,rowNumber){
-						if (JSON.stringify(cell.value) == key){
-							timeObj[worksheet.getCell('F'+rowNumber).value] = {'xloc': worksheet.getCell('O'+rowNumber).value ,'yloc':worksheet.getCell('P'+rowNumber).value };
+						if (cell.value == key){
+							timeObj[worksheet.getCell('F'+rowNumber).value] = { xloc : worksheet.getCell('O'+rowNumber).value , yloc :worksheet.getCell('P'+rowNumber).value };
 						}
 					});
-					if (timeObj){
-						uniqueList.set(key,timeObj);
-					}
+					if (timeObj){ uniqueList.set(key,timeObj); }
 				}
 				console.log("done");
+
+				for (var key of uniqueList.keys()){
+					console.log( key+ "|" + uniqueList.get(key));
+					objToSend[key] =  uniqueList.get(key) ;
+				}
+
 			};
 
 			makeObj(makeUniquePlayers());
@@ -68,13 +73,18 @@ var convertData = function(){
 	    });
 }
 
-setTimeout(function(){convertData();},2*1000);
+setTimeout(function(){convertData();},1*1000);
 
-app.get('/getData',function(req,res){
-	res.status(200).send(JSON.stringify(uniqueList));
+app.get('/api/getData',function(req,res){
+	console.log("Sending res: "+ uniqueList.has('"Diego Valeri"'));
+	
+
+
+	res.status(200).send(objToSend);
 });
 
 app.get('*', function(req, res) {
+	console.log("Sending the index.html");
     res.status(200).sendFile(path.resolve('public/index.html'));
 });
 

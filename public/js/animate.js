@@ -1,5 +1,6 @@
 
 
+var app = angular.module('myApp',[]);
 
 $( document ).ready(function() {
 	var canvas = document.getElementById("myCanvas");
@@ -28,7 +29,7 @@ function getPosition(event){
 	var rect = canvas.getBoundingClientRect();
     var x = event.clientX - rect.left; // x == the location of the click in the document - the location (relative to the left) of the canvas in the document
     var y = event.clientY - rect.top;
-    console.log("x: "+x + " y : "+y);
+    console.log("x: "+x + " y : "+ y );
     drawCoordinates(x,y);
 }
 
@@ -42,3 +43,23 @@ function drawCoordinates(x,y){
     ctx.fill(); // Close the path and fill.
 }
 
+
+app.config(['$httpProvider', function($httpProvider) {
+        $httpProvider.defaults.useXDomain = true;
+        delete $httpProvider.defaults.headers.common['X-Requested-With'];
+    }
+]);
+
+app.controller('myCtl', function($scope, $http) {
+
+	$scope.getReady = function(){
+		console.log("Sending the request: ")
+		$http.get("api/getData")        //Add parms to make it secure 
+		.then(function (response) {
+			$scope.dataPoints = response.data;
+
+			console.log(JSON.stringify(response.data));
+		});
+	};
+	
+});
